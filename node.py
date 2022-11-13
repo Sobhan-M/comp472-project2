@@ -1,5 +1,5 @@
+from car import *
 import numpy as np
-from car import Car
 
 GRID_MIN = 0
 GRID_MAX = 5
