@@ -21,6 +21,22 @@ class Car:
 		else:
 			for pos in self.positions:
 				pos += np.array([moveDistance,0])
+		
+		self.fuel -= moveDistance
+
+	def nextPosition(self, moveDistance:int):
+		newPositions = []
+		if self.orientation == "x":
+			for pos in self.positions:
+				newPositions.append(pos + np.array([0,moveDistance]))
+		else:
+			for pos in self.positions:
+				newPositions.append(pos + np.array([moveDistance,0]))
+		return newPositions
+
+	def canUseFuel(self, fuelToUse:int):
+		return self.fuel - fuelToUse >= 0
+		
 
 	def isAtExit(self):
 		return EXIT_POSITION in self.positions
