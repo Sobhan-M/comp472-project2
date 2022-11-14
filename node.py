@@ -1,16 +1,17 @@
 from car import *
+from grid import *
 import numpy as np
 
 GRID_MIN = 0
 GRID_MAX = 5
 
 class Node:
-	def __init__(self, parent, children, grid, cars):
+	def __init__(self, grid:Grid, cars:list, parent=None, children=[]):
 		self.parent = parent
 		self.children = children
 		self.grid = grid
 		self.cars = cars
-	
+
 	def __eq__(self, other):
 		if not isinstance(other, Node):
 			return False
@@ -24,7 +25,7 @@ class Node:
 		for i in range(len(self.cars)):
 			if self.cars[i] != other.cars[i]:
 				return False
-
+		
 		return True
 	
 	def isGoal(self):
@@ -37,9 +38,26 @@ class Node:
 		# Will depend on the heuristic.
 		return
 
-	def generateChild():
-		# Create a new node after the car moves.
-		return
+	def generateChild(self, grid:Grid, car:Car, move:int, cars:list):
+		if not canMove(car, move, cars):
+			return None
+		
+		newCar = car.copy()
+		newCar.move(move)
+		newGrid = grid.getUpdatedGrid(newCar)
+		newCars = copyCarsList(cars)
+		
+		# Updating cars list.
+		for i in range(len(newCars)):
+			if newCars[i].symbol == car.symbol:
+				if newCar.isAtExit():
+					newCars.pop(i)
+				else:
+					newCars[i] = newCar
+
+		newNode = Node(newGrid, newCars, self)
+		self.children.append(newNode)
+		return newNode
 
 	def isRoot(self):
 		return self.parent is None
@@ -60,6 +78,19 @@ def hasPositionConflict(cars, carSymbol, newPosition):
 				if pos in car.positions:
 					return False
 	return True
+
+def canMove(car:Car, numOfMoves:int, cars:list):
+		newPosition = car.nextPosition(numOfMoves)
+
+		canUseFuel = car.canUseFuel(numOfMoves)
+		hasNoConflict = not hasPositionConflict(cars, car.symbol, newPosition)
+		isWithinBounds = isInBorder(newPosition)
+				
+		return canUseFuel and isWithinBounds and hasNoConflict
+
+def moveCar(grid:Grid, car:Car, move:int):
+	car.move(move)
+	grid.updateGrid(car)
 
 def copyCarsList(cars):
 	newCars = []

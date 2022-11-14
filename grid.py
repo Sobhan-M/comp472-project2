@@ -1,8 +1,11 @@
 from car import *
 
 class Grid:
-	def __init__(self, string:str):
-		self.grid = stringToGrid(string)
+	def __init__(self, grid):
+		if isinstance(grid, str):
+			self.grid = stringToGrid(grid)
+		else:
+			self.grid = grid
 
 	def __str__(self):
 		message = ""
@@ -37,10 +40,15 @@ class Grid:
 
 		for position in car.positions:
 			self.grid[position[0]][position[1]] = car.symbol
-	
+
 	def copy(self):
 		newGrid = copyMatrix(self.grid)
 		return Grid(newGrid)
+
+	def getUpdatedGrid(self, car:Car):
+		newGrid = self.copy()
+		newGrid.updateGrid(car)
+		return newGrid
 
 def copyMatrix(matrix):
 	newMatrix = []
