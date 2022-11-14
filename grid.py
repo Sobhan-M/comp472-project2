@@ -30,6 +30,12 @@ class Grid:
 		return True
 
 	def updateGrid(self, car:Car):
+		"""
+		Updates the grid after the car has moved.
+		Replaces all old positions with '.'.
+		Places symbol on all new positions.
+		Removes car completely if it is at the exit.
+		"""
 		for i in self.grid:
 			for j in self.grid:
 				if self.grid[i][j] == car.symbol:

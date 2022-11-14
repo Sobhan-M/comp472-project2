@@ -3,9 +3,12 @@ import numpy as np
 EXIT_POSITION = np.array([2,5])
 
 class Car:
-	# Constructor. Pos is an array of position vectors.
-	def __init__(self, pos:list, length:int, orientation:str, symbol:str, fuel=100):
-		self.positions = pos
+	def __init__(self, positions:list, length:int, orientation:str, symbol:str, fuel=100):
+		"""
+		Positions is a list of positions.
+		i.e. (y,x)
+		"""
+		self.positions = positions
 		self.length = length
 		self.orientation = orientation
 		self.symbol = symbol
@@ -35,10 +38,13 @@ class Car:
 
 		return True
 
-	# Moves the car moveDistance blocks based on orientation.
-	# If oriented horizontally, then positive is to the right.
-	# If oriented vertically, then positive is to the left.
+	
 	def move(self, moveDistance:int):
+		"""
+		Moves the car moveDistance blocks based on orientation.
+		If oriented horizontally, then positive is to the right.
+		If oriented vertically, then positive is to the left.
+		"""
 		if self.orientation == "x":
 			for pos in self.positions:
 				pos += np.array([0,moveDistance])
@@ -52,6 +58,9 @@ class Car:
 		return Car(copyPositions(self.positions), self.length, self.orientation, self.symbol, self.fuel)
 
 	def nextPosition(self, moveDistance:int):
+		"""
+		Returns the change in position, without actually applying it or adjusting fuel.
+		"""
 		newPositions = []
 		if self.orientation == "x":
 			for pos in self.positions:
