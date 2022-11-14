@@ -38,6 +38,19 @@ class Grid:
 		for position in car.positions:
 			self.grid[position[0]][position[1]] = car.symbol
 	
+	def copy(self):
+		newGrid = copyMatrix(self.grid)
+		return Grid(newGrid)
+
+def copyMatrix(matrix):
+	newMatrix = []
+	for i in range(len(matrix)):
+		newMatrix.append([])
+		for j in range(len(matrix)):
+			newMatrix[i].append(matrix[i][j])
+	return newMatrix
+
+
 def stringToGrid(string:str):
 	grid = []
 	for i in range(0,6):

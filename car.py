@@ -48,6 +48,9 @@ class Car:
 		
 		self.fuel -= moveDistance
 
+	def copy(self):
+		return Car(copyPositions(self.positions), self.length, self.orientation, self.symbol, self.fuel)
+
 	def nextPosition(self, moveDistance:int):
 		newPositions = []
 		if self.orientation == "x":
@@ -120,6 +123,13 @@ def generateCarList(string:str):
 		cars.append(Car(carPositions[i], carLengths[i], carOrientations[i], carSymbols[i]))
 
 	return cars
+
+def copyPositions(positions:list):
+	newPositions = []
+	for position in positions:
+		newPositions.append((position[0], position[1]))
+	return newPositions
+
 def arePositionsEqual(position1, position2):
 	if len(position1) != len(position2):
 		return False

@@ -61,3 +61,14 @@ def hasPositionConflict(cars, carSymbol, newPosition):
 					return False
 	return True
 
+def copyCarsList(cars):
+	newCars = []
+	for car in cars:
+		newCars.append(car)
+	return newCars
+
+
+
+
+
+
