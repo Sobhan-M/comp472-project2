@@ -14,6 +14,27 @@ class Car:
 	def __str__(self):
 		return f"{self.symbol} {self.fuel}"
 
+	def __eq__(self, other):
+		if not isinstance(other, Car):
+			return False
+		
+		if not arePositionsEqual(self.positions, other.positions):
+			return False
+
+		if self.length != other.length:
+			return False
+
+		if self.orientation != other.orientation:
+			return False
+
+		if self.symbol != other.symbol:
+			return False
+
+		if self.fuel != other.fuel:
+			return False
+
+		return True
+
 	# Moves the car moveDistance blocks based on orientation.
 	# If oriented horizontally, then positive is to the right.
 	# If oriented vertically, then positive is to the left.
@@ -99,3 +120,15 @@ def generateCarList(string:str):
 		cars.append(Car(carPositions[i], carLengths[i], carOrientations[i], carSymbols[i]))
 
 	return cars
+def arePositionsEqual(position1, position2):
+	if len(position1) != len(position2):
+		return False
+	
+	for i in range(len(position1)):
+		if len(position1[i]) != len(position2[i]):
+			return False
+		for j in range(len(position1[i])):
+			if position1[i][j] != position2[i][j]:
+				return False
+	
+	return True

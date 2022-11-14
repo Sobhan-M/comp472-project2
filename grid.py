@@ -10,6 +10,22 @@ class Grid:
 			message += "  ".join(row) + "\n"
 		return message
 
+	def __eq__(self, other):
+		if not isinstance(other, Grid):
+			return False
+
+		if len(self.grid) != len(other.grid):
+			return False
+
+		for i in range(len(self.grid)):
+			if len(self.grid[i]) != len(other.grid[i]):
+				return False
+			for j in len(self.grid[i]):
+				if self.grid[i][j] != other.grid[i][j]:
+					return False
+		
+		return True
+
 	def updateGrid(self, car:Car):
 		for i in self.grid:
 			for j in self.grid:

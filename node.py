@@ -11,15 +11,21 @@ class Node:
 		self.grid = grid
 		self.cars = cars
 	
-	def canMove(self, car:Car, numOfMoves):
+	def __eq__(self, other):
+		if not isinstance(other, Node):
+			return False
 
-		newPosition = car.nextPosition(numOfMoves)
+		if self.grid != other.grid:
+			return False
 
-		canUseFuel = car.canUseFuel(numOfMoves)
-		hasNoConflict = not hasPositionConflict(self.cars, car.symbol, newPosition)
-		isWithinBounds = isInBorder(newPosition)		
+		if len(self.cars) != len(other.cars):
+			return False
 
-		return canUseFuel and isWithinBounds and hasNoConflict
+		for i in range(len(self.cars)):
+			if self.cars[i] != other.cars[i]:
+				return False
+
+		return True
 	
 	def isGoal(self):
 		for car in self.cars:
