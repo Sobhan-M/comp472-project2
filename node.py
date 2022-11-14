@@ -62,6 +62,19 @@ class Node:
 	def isRoot(self):
 		return self.parent is None
 
+	def cost(self):
+		if self.isRoot():
+			return 0
+
+		cost = 1
+		parent = self.parent
+
+		while not parent.isRoot():
+			cost += 1
+			parent = parent.parent
+		
+		return cost
+
 def isInBorder(positions):
 	for pos in positions:
 		# Checking if position is within borders.
