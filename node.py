@@ -27,6 +27,9 @@ class Node:
 				return False
 		
 		return True
+
+	def copy(self):
+		return Node(self.grid.copy(), copyCarsList(self.cars), self.parent, self.children)
 	
 	def isGoal(self):
 		for car in self.cars:
@@ -58,6 +61,17 @@ class Node:
 		newNode = Node(newGrid, newCars, self)
 		self.children.append(newNode)
 		return newNode
+
+	def expandChildren(self):
+		children = []
+
+		for car in self.cars:
+			for move in range(-4,5):
+				child = self.generateChild(self.grid, car, move, self.cars)
+				if not child is None:
+					children.append(child)
+					
+		return children
 
 	def isRoot(self):
 		return self.parent is None
@@ -108,7 +122,7 @@ def moveCar(grid:Grid, car:Car, move:int):
 def copyCarsList(cars):
 	newCars = []
 	for car in cars:
-		newCars.append(car)
+		newCars.append(car.copy())
 	return newCars
 
 
