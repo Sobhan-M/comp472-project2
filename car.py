@@ -1,9 +1,10 @@
 import numpy as np
+from position import *
 
 EXIT_POSITION = np.array([2,5])
 
 class Car:
-	def __init__(self, positions:list, length:int, orientation:str, symbol:str, fuel=100):
+	def __init__(self, positions:Position, length:int, orientation:str, symbol:str, fuel=100):
 		"""
 		Positions is a list of positions.
 		i.e. (y,x)
@@ -21,7 +22,7 @@ class Car:
 		if not isinstance(other, Car):
 			return False
 		
-		if not arePositionsEqual(self.positions, other.positions):
+		if not self.positions == other.positions:
 			return False
 
 		if self.length != other.length:
@@ -46,28 +47,26 @@ class Car:
 		If oriented vertically, then positive is to the left.
 		"""
 		if self.orientation == "x":
-			for pos in self.positions:
-				pos += np.array([0,moveDistance])
+			self.positions.translate((0, moveDistance))
 		else:
-			for pos in self.positions:
-				pos += np.array([moveDistance,0])
+			self.positions.translate((moveDistance, 0))
 		
 		self.fuel -= moveDistance
 
 	def copy(self):
-		return Car(copyPositions(self.positions), self.length, self.orientation, self.symbol, self.fuel)
+		return Car(self.positions.copy(), self.length, self.orientation, self.symbol, self.fuel)
 
 	def nextPosition(self, moveDistance:int):
 		"""
 		Returns the change in position, without actually applying it or adjusting fuel.
 		"""
-		newPositions = []
+		newPositions = self.positions.copy()
+
 		if self.orientation == "x":
-			for pos in self.positions:
-				newPositions.append(pos + np.array([0,moveDistance]))
+			newPositions.translate((0, moveDistance))
 		else:
-			for pos in self.positions:
-				newPositions.append(pos + np.array([moveDistance,0]))
+			newPositions.translate((moveDistance, 0))
+
 		return newPositions
 
 	def canUseFuel(self, fuelToUse:int):
@@ -129,25 +128,6 @@ def generateCarList(string:str):
 
 	cars = list()
 	for i in range(len(carSymbols)):
-		cars.append(Car(carPositions[i], carLengths[i], carOrientations[i], carSymbols[i]))
+		cars.append(Car(Position(carPositions[i]), carLengths[i], carOrientations[i], carSymbols[i]))
 
 	return cars
-
-def copyPositions(positions:list):
-	newPositions = []
-	for position in positions:
-		newPositions.append((position[0], position[1]))
-	return newPositions
-
-def arePositionsEqual(position1, position2):
-	if len(position1) != len(position2):
-		return False
-	
-	for i in range(len(position1)):
-		if len(position1[i]) != len(position2[i]):
-			return False
-		for j in range(len(position1[i])):
-			if position1[i][j] != position2[i][j]:
-				return False
-	
-	return True
