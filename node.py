@@ -66,7 +66,7 @@ class Node:
 		children = []
 
 		for car in self.cars:
-			for move in range(-4,5):
+			for move in [-4,-3,-2,-1,1,2,3,4]:
 				child = self.generateChild(self.grid, car, move, self.cars)
 				if not child is None:
 					children.append(child)
