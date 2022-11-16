@@ -51,7 +51,7 @@ class Car:
 		else:
 			self.positions.translate((moveDistance, 0))
 		
-		self.fuel -= moveDistance
+		self.fuel -= abs(moveDistance)
 
 	def copy(self):
 		return Car(self.positions.copy(), self.length, self.orientation, self.symbol, self.fuel)
@@ -73,12 +73,17 @@ class Car:
 		return self.fuel - fuelToUse >= 0
 
 	def isAtExit(self):
-		return EXIT_POSITION in self.positions
+		for coord in self.positions.position:
+			if len(coord) != 2:
+				return False		
+			if EXIT_POSITION[0] == coord[0] and EXIT_POSITION[1] == coord[1]:
+				return True
+		return False
 
 def findCarSymbols(string:str):
 	symbols = []
 	characters = set(string)
-	# Create a car for each symbol.
+	
 	for character in characters:
 		if character == ".":
 			continue
