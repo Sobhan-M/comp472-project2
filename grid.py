@@ -55,7 +55,7 @@ def copyMatrix(matrix):
 	newMatrix = []
 	for i in range(len(matrix)):
 		newMatrix.append([])
-		for j in range(len(matrix)):
+		for j in range(len(matrix[i])):
 			newMatrix[i].append(matrix[i][j])
 	return newMatrix
 

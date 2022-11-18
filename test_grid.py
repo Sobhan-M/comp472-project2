@@ -47,6 +47,42 @@ class TestPosition(unittest.TestCase):
 		gridCopy.grid[0][0] = "."
 		self.assertNotEqual(grid, gridCopy, "should not be affected by change to copy")
 
+	def test_copyMatrix(self):
+		m1 = [[1,2,3],[4,5,6]]
+		m1Copy = copyMatrix(m1)
+
+		self.assertEqual(m1, m1Copy, "should be equal to copy")
+
+		m1[0][0] = 0
+		self.assertNotEqual(m1, m1Copy, "should not be equal to changed copy")
+
+	def test_stringToGrid(self):
+		grid3 = [[".", ".", ".", ".", "F", "."],
+			[".", ".", "B", ".", "F", "."],
+			["A", "A", "B", "C", "F", "."],
+			[".", ".", ".", "C", "D", "D"],
+			[".", ".", ".", "C", ".", "."],
+			[".", ".", "E", "E", ".", "."]]
+		self.assertEqual(stringToGrid(example3), grid3)
+		
+		grid5 = [[".", ".", ".", ".", ".", "."],
+			[".", ".", ".", ".", ".", "."],
+			[".", ".", ".", ".", ".", "."],
+			[".", ".", ".", ".", ".", "."],
+			[".", ".", ".", ".", ".", "."],
+			[".", ".", ".", ".", ".", "."]]
+		self.assertEqual(stringToGrid(example5), grid5)
+
+		grid6 = [[".", ".", ".", ".", ".", "."],
+			[".", ".", ".", ".", ".", "."],
+			[".", ".", ".", ".", ".", "."],
+			[".", ".", ".", ".", ".", "."],
+			[".", ".", ".", ".", ".", "."],
+			["A", "A", "A", ".", ".", "."]]
+		self.assertEqual(stringToGrid(example6), grid6)
+
+		
+
 
 if __name__ == '__main__':
     unittest.main()
