@@ -23,7 +23,7 @@ class Grid:
 		for i in range(len(self.grid)):
 			if len(self.grid[i]) != len(other.grid[i]):
 				return False
-			for j in len(self.grid[i]):
+			for j in range(len(self.grid[i])):
 				if self.grid[i][j] != other.grid[i][j]:
 					return False
 		
@@ -36,25 +36,20 @@ class Grid:
 		Places symbol on all new positions.
 		Removes car completely if it is at the exit.
 		"""
-		for i in self.grid:
-			for j in self.grid:
+		for i in range(len(self.grid)):
+			for j in range(len(self.grid[i])):
 				if self.grid[i][j] == car.symbol:
 					self.grid[i][j] = "."
 
 		if car.isAtExit():
 			return
 
-		for position in car.positions:
-			self.grid[position[0]][position[1]] = car.symbol
+		for coord in car.positions.position:
+			self.grid[coord[0]][coord[1]] = car.symbol
 
 	def copy(self):
 		newGrid = copyMatrix(self.grid)
 		return Grid(newGrid)
-
-	def getUpdatedGrid(self, car:Car):
-		newGrid = self.copy()
-		newGrid.updateGrid(car)
-		return newGrid
 
 def copyMatrix(matrix):
 	newMatrix = []
