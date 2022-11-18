@@ -34,12 +34,13 @@ class Node:
 	def isGoal(self):
 		for car in self.cars:
 			if car.symbol == "A":
-				return False
+				if car.isAtExit():
+					return True
+				else:
+					return False
+
+		# If A is not there, then automatically becomes the goal state.
 		return True
-	
-	def getHeuristic():
-		# Will depend on the heuristic.
-		return
 
 	def generateChild(self, grid:Grid, car:Car, move:int, cars:list):
 		if not canMove(car, move, cars):
@@ -47,7 +48,8 @@ class Node:
 		
 		newCar = car.copy()
 		newCar.move(move)
-		newGrid = grid.getUpdatedGrid(newCar)
+		newGrid = grid.copy()
+		newGrid.updateGrid(newCar)
 		newCars = copyCarsList(cars)
 		
 		# Updating cars list.
@@ -108,16 +110,7 @@ def hasPositionConflict(cars, carSymbol, newPosition):
 
 def canMove(car:Car, numOfMoves:int, cars:list):
 		newPosition = car.nextPosition(numOfMoves)
-
-		canUseFuel = car.canUseFuel(numOfMoves)
-		hasNoConflict = not hasPositionConflict(cars, car.symbol, newPosition)
-		isWithinBounds = isInBorder(newPosition)
-				
-		return canUseFuel and isWithinBounds and hasNoConflict
-
-def moveCar(grid:Grid, car:Car, move:int):
-	car.move(move)
-	grid.updateGrid(car)
+		return car.canUseFuel(numOfMoves) and isInBorder(newPosition) and not hasPositionConflict(cars, car.symbol, newPosition)
 
 def copyCarsList(cars):
 	newCars = []
