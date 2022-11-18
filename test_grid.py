@@ -9,7 +9,7 @@ example4 = "....F...B.F.AABCF....C.....C....EE.."
 example5 = "...................................."
 example6 = "..............................AAA..."
 
-class TestPosition(unittest.TestCase):
+class TestGrid(unittest.TestCase):
 
 	def test_equal(self):
 		
