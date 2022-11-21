@@ -22,7 +22,7 @@ class Position:
 		return Position(positionCopy)
 	
 	def __str__(self):
-		return " ".join(self.position)
+		return str(self.position)
 
 	def translate(self, vector:tuple):
 		for i in range(len(self.position)):
