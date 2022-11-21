@@ -75,5 +75,17 @@ class TestPriorityQueue(unittest.TestCase):
 		pq.removeMin()
 		self.assertTrue(pq.isEmpty())
 
+	def test_isInList(self):
+		pq = PriorityQueue(lambda x: x) # Value is the same as the object.
+		pq.insert(3)
+		pq.insert(2)
+		pq.insert(1)
+
+		self.assertFalse(isInList(5, pq.array))
+		self.assertTrue(isInList(1, pq.array))
+		self.assertTrue(isInList(2, pq.array))
+		self.assertTrue(isInList(3, pq.array))
+
+
 if __name__ == '__main__':
     unittest.main()

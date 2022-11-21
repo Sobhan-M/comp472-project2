@@ -47,3 +47,8 @@ class PriorityQueue:
 	def isEmpty(self):
 		return len(self.array) == 0
 		
+def isInList(obj, array):
+	for element in array:
+		if obj == element:
+			return True
+	return False
