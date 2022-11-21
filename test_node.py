@@ -86,6 +86,7 @@ class TestNode(unittest.TestCase):
 		self.assertFalse(canMove(carA, 1, [carA, carB]), "should intersect with B")
 		self.assertFalse(canMove(carA, -1, [carA, carB]), "should leave area")
 		self.assertFalse(canMove(carB, 3, [carA, carB]), "should run out of fuel")
+		self.assertFalse(canMove(carA, 3, [carA, carB]))
 
 	
 	def test_copyCarsList(self):

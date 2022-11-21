@@ -61,6 +61,7 @@ class Node:
 			if newCars[i].symbol == car.symbol:
 				if newCar.isAtExit() and newCar.orientation == "x":
 					newCars.pop(i)
+					break
 				else:
 					newCars[i] = newCar
 
@@ -109,11 +110,25 @@ def hasPositionConflict(cars, carSymbol, newPosition):
 	for pos in newPosition.position:
 		for car in cars:
 			if car.symbol != carSymbol: # Do not compare position with self.
-				if pos in car.positions.position:
-					return True
+				for coord in car.positions.position:
+					if pos[0] == coord[0] and pos[1] == coord[1]:
+						return True
 	return False
 
 def canMove(car:Car, numOfMoves:int, cars:list):
+		# Checking each position along the way.
+		if numOfMoves < 0:
+			start = numOfMoves
+			end = 0
+		else:
+			start = 0
+			end = numOfMoves
+		
+		for intermediateMove in range(start, end):
+			intermediatePosition = car.nextPosition(intermediateMove)
+			if hasPositionConflict(cars, car.symbol, intermediatePosition):
+				return False
+
 		newPosition = car.nextPosition(numOfMoves)
 		return car.canUseFuel(numOfMoves) and isInBorder(newPosition) and not hasPositionConflict(cars, car.symbol, newPosition)
 
