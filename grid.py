@@ -41,7 +41,7 @@ class Grid:
 				if self.grid[i][j] == car.symbol:
 					self.grid[i][j] = "."
 
-		if car.isAtExit():
+		if car.isAtExit() and car.orientation == "x":
 			return
 
 		for coord in car.positions.position:

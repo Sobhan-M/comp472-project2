@@ -6,11 +6,12 @@ GRID_MIN = 0
 GRID_MAX = 5
 
 class Node:
-	def __init__(self, grid:Grid, cars:list, parent=None, children=[]):
+	def __init__(self, grid:Grid, cars:list, parent=None, children=[], move=""):
 		self.parent = parent
 		self.children = children
 		self.grid = grid
 		self.cars = cars
+		self.move = move
 
 	def __eq__(self, other):
 		if not isinstance(other, Node):
@@ -42,25 +43,29 @@ class Node:
 		# If A is not there, then automatically becomes the goal state.
 		return True
 
-	def generateChild(self, grid:Grid, car:Car, move:int, cars:list):
-		if not canMove(car, move, cars):
+	def generateChild(self, car:Car, move:int):
+		if move == 0:
+			raise Exception("Cannot Generate A Child Without A Move")
+
+		if not canMove(car, move, self.cars):
 			return None
 		
 		newCar = car.copy()
 		newCar.move(move)
-		newGrid = grid.copy()
+		newGrid = self.grid.copy()
 		newGrid.updateGrid(newCar)
-		newCars = copyCarsList(cars)
+		newCars = copyCarsList(self.cars)
 		
 		# Updating cars list.
 		for i in range(len(newCars)):
 			if newCars[i].symbol == car.symbol:
-				if newCar.isAtExit():
+				if newCar.isAtExit() and newCar.orientation == "x":
 					newCars.pop(i)
 				else:
 					newCars[i] = newCar
 
 		newNode = Node(newGrid, newCars, self)
+		newNode.move = moveFromParent(car, move)
 		self.children.append(newNode)
 		return newNode
 
@@ -68,9 +73,9 @@ class Node:
 		children = []
 
 		for car in self.cars:
-			for move in [-4,-3,-2,-1,1,2,3,4]:
-				child = self.generateChild(self.grid, car, move, self.cars)
-				if not child is None:
+			for move in [4,3,2,1,-1,-2,-3,-4]:
+				child = self.generateChild(car, move)
+				if child is not None:
 					children.append(child)
 					
 		return children
@@ -92,7 +97,7 @@ class Node:
 		return cost
 
 def isInBorder(positions):
-	for pos in positions:
+	for pos in positions.position:
 		# Checking if position is within borders.
 		if GRID_MIN <= pos[0] and pos[0] <= GRID_MAX:
 			if GRID_MIN <= pos[1] and pos[1] <= GRID_MAX:
@@ -101,12 +106,12 @@ def isInBorder(positions):
 	return True
 
 def hasPositionConflict(cars, carSymbol, newPosition):
-	for pos in newPosition:
+	for pos in newPosition.position:
 		for car in cars:
 			if car.symbol != carSymbol: # Do not compare position with self.
-				if pos in car.positions:
-					return False
-	return True
+				if pos in car.positions.position:
+					return True
+	return False
 
 def canMove(car:Car, numOfMoves:int, cars:list):
 		newPosition = car.nextPosition(numOfMoves)
@@ -117,6 +122,21 @@ def copyCarsList(cars):
 	for car in cars:
 		newCars.append(car.copy())
 	return newCars
+
+def moveFromParent(car:Car, move:int):
+		output = car.symbol;
+		if car.orientation == "x" and move > 0:
+			output += " right "
+		elif car.orientation == "x" and move < 0:
+			output += " left "
+		elif car.orientation == "y" and move > 0:
+			output += " down "
+		elif car.orientation == "y" and move < 0:
+			output += " up "
+
+		output += str(abs(move))
+
+		return output
 
 
 
