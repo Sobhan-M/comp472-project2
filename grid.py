@@ -51,6 +51,12 @@ class Grid:
 		newGrid = copyMatrix(self.grid)
 		return Grid(newGrid)
 
+	def lineString(self):
+		output = ""
+		for row in self.grid:
+			output += "".join(row)
+		return output
+
 def copyMatrix(matrix):
 	newMatrix = []
 	for i in range(len(matrix)):

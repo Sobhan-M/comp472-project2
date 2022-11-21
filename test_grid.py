@@ -81,6 +81,17 @@ class TestGrid(unittest.TestCase):
 			["A", "A", "A", ".", ".", "."]]
 		self.assertEqual(stringToGrid(example6), grid6)
 
+	def test_lineString(self):
+		grid1 = Grid(example1)
+		grid2 = Grid(example2)
+		grid3 = Grid(example3)
+		grid4 = Grid(example4)
+
+		self.assertEqual(grid1.lineString(), example1)
+		self.assertEqual(grid2.lineString(), example2)
+		self.assertEqual(grid3.lineString(), example3)
+		self.assertEqual(grid4.lineString(), example4)
+
 		
 
 
