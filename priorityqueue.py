@@ -50,6 +50,16 @@ class PriorityQueue:
 
 	def isEmpty(self):
 		return len(self.array) == 0
+
+	def findIndex(self, obj):
+		if self.isEmpty():
+			return -1
+		
+		for i in range(len(self.array)):
+			if obj == self.array[i]:
+				return i
+		
+		return -1
 		
 def isInList(obj, array):
 	for element in array:

@@ -93,6 +93,18 @@ class TestPriorityQueue(unittest.TestCase):
 		self.assertTrue(isInList(2, pq.array))
 		self.assertTrue(isInList(3, pq.array))
 
+	def test_findIndex(self):
+		pq = PriorityQueue(lambda x: x) # Value is the same as the object.
+
+		self.assertEqual(pq.findIndex(1), -1)
+		pq.insert(3)
+		pq.insert(2)
+		pq.insert(1)
+		self.assertEqual(pq.findIndex(1), 2)
+		self.assertEqual(pq.findIndex(2), 1)
+		self.assertEqual(pq.findIndex(3), 0)
+		self.assertEqual(pq.findIndex(4), -1)
+
 
 if __name__ == '__main__':
     unittest.main()
