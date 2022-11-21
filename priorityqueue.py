@@ -8,11 +8,11 @@ class PriorityQueue:
 		self.array = []
 	
 	def insert(self, obj:object):
-		self.array.append(obj)
+		self.array.insert(0, obj)
 
 	def insertList(self, objList:list):
 		for obj in objList:
-			self.array.append(obj)
+			self.array.insert(0, obj)
 
 	def getMin(self):
 		if len(self.array) == 0:
