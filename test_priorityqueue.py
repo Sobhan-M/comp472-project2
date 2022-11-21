@@ -11,6 +11,13 @@ class TestPriorityQueue(unittest.TestCase):
 		self.assertEqual(len(pq.array), 3)
 		self.assertEqual(pq.array, [1,2,3])
 
+	def test_insertList(self):
+		pq = PriorityQueue(lambda x: x) # Value is the same as the object.
+		pq.insertList([1,2,3])
+
+		self.assertEqual(len(pq.array), 3)
+		self.assertEqual(pq.array, [1,2,3])
+
 	def test_getMin(self):
 		pq = PriorityQueue(lambda x: x) # Value is the same as the object.
 		pq.insert(3)
