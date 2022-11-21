@@ -16,7 +16,7 @@ class Car:
 		self.fuel = fuel
 
 	def __str__(self):
-		return f"{self.symbol} {self.fuel}"
+		return f"{self.symbol}:{self.fuel}"
 
 	def __eq__(self, other):
 		if not isinstance(other, Car):

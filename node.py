@@ -29,6 +29,12 @@ class Node:
 		
 		return True
 
+	def __str__(self):
+		output = self.grid.lineString() + " "
+		for car in self.cars:
+			output += str(car) + str(car.positions) + " "
+		return output
+
 	def copy(self):
 		return Node(self.grid.copy(), copyCarsList(self.cars), self.parent, self.children)
 	
