@@ -43,4 +43,7 @@ class PriorityQueue:
 		self.array.pop(minIndex)
 
 		return min
+
+	def isEmpty(self):
+		return len(self.array) == 0
 		
