@@ -11,13 +11,13 @@ class TestCar(unittest.TestCase):
 		car4 = Car(Position([[0,0],[0,1]]), 3, "x", "A")
 		car5 = Car(Position([[0,0],[0,1]]), 2, "y", "A")
 		car6 = Car(Position([[0,0],[0,1]]), 2, "x", "B")
-		car7 = Car(Position([[0,0],[0,1]]), 2, "x", "A", 99)
+		# car7 = Car(Position([[0,0],[0,1]]), 2, "x", "A", 99)
 		self.assertEqual(car1, car2, "should be equal")
 		self.assertNotEqual(car1, car3, "should be unequal because of position")
 		self.assertNotEqual(car1, car4, "should be unequal because of length")
 		self.assertNotEqual(car1, car5, "should be unequal because of orientation")
 		self.assertNotEqual(car1, car6, "should be unequal because of symbol")
-		self.assertNotEqual(car1, car7, "should be unequal because of fuel")
+		# self.assertNotEqual(car1, car7, "should be unequal because of fuel")
 
 	def test_move(self):
 		car = Car(Position([[0,0],[0,1]]), 2, "x", "A", 10)
