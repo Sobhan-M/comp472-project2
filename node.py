@@ -30,10 +30,7 @@ class Node:
 		return True
 
 	def __str__(self):
-		output = self.grid.lineString() + " "
-		for car in self.cars:
-			output += car.symbol + str(car.positions) + " "
-		return output
+		return self.grid.lineString() + " "
 
 	def copy(self):
 		return Node(self.grid.copy(), copyCarsList(self.cars), self.parent, self.children)
