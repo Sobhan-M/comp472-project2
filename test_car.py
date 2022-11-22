@@ -136,8 +136,8 @@ class TestCar(unittest.TestCase):
 		self.assertEqual(orientations[1], "y", "should be y for B")
 
 	def test_generateCarList(self):
-		sample = "B.....B.......................AAA..."
-		cars = generateCarList(sample)
+		sample1 = "B.....B.......................AAA..."
+		cars = generateCarList(sample1)
 
 		if cars[0].symbol == "A":
 			self.assertEqual(cars[0], Car(Position([[5,0],[5,1],[5,2]]), 3, "x", "A"), "should be A")
@@ -145,6 +145,19 @@ class TestCar(unittest.TestCase):
 		else:
 			self.assertEqual(cars[0], Car(Position([[0,0],[1,0]]), 2, "y", "B"), "should be B")
 			self.assertEqual(cars[1], Car(Position([[5,0],[5,1],[5,2]]), 3, "x", "A"), "should be A")
+
+		sample2 = "...J..H..J.KHAAJ.K................GG H3 K4 J2"
+		cars = generateCarList(sample2)
+
+		for car in cars:
+			if car.symbol == "H":
+				self.assertEqual(car.fuel, 3)
+			elif car.symbol == "K":
+				self.assertEqual(car.fuel, 4)
+			elif car.symbol == "J":
+				self.assertEqual(car.fuel, 2)
+			else:
+				self.assertEqual(car.fuel, 100)
 
 
 if __name__ == '__main__':

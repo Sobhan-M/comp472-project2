@@ -1,5 +1,6 @@
 import numpy as np
 from position import *
+from iomanager import *
 
 EXIT_POSITION = np.array([2,5])
 
@@ -125,14 +126,18 @@ def findCarOrientations(positions):
 			orientations.append("y")
 	return orientations
 
-def generateCarList(string:str):
-	carSymbols = findCarSymbols(string)
-	carPositions = findCarPositions(string, carSymbols)
+def generateCarList(puzzleLine:str):
+	grid = getGrid(puzzleLine)
+	carFuel = getFuel(puzzleLine)
+
+	carSymbols = findCarSymbols(grid)
+	carPositions = findCarPositions(grid, carSymbols)
 	carOrientations = findCarOrientations(carPositions)
 	carLengths = findCarLengths2(carPositions)
 
 	cars = list()
 	for i in range(len(carSymbols)):
-		cars.append(Car(Position(carPositions[i]), carLengths[i], carOrientations[i], carSymbols[i]))
+		fuel = 100 if carFuel.get(carSymbols[i]) is None else carFuel.get(carSymbols[i])
+		cars.append(Car(Position(carPositions[i]), carLengths[i], carOrientations[i], carSymbols[i], fuel))
 
 	return cars
