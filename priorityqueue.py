@@ -49,5 +49,19 @@ class PriorityQueue:
 
 		return min
 
+	def getValue(self, obj):
+		if self.isEmpty():
+			return None
+
+		costHash = self.hash.get(self.val(obj))
+
+		if costHash is None:
+			return None
+
+		return costHash.get(str(obj))
+
+	def updateValue(self, obj):
+		self.hash[self.val(obj)][str(obj)] = obj
+
 	def isEmpty(self):
 		return self.length == 0
