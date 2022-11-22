@@ -10,6 +10,7 @@ example3 = "....F...B.F.AABCF....CDD...C....EE.."
 example4 = "....F...B.F.AABCF....C.....C....EE.."
 example5 = "...................................."
 example6 = "..............................AAA..."
+example7 = "BBBJCCH..J.KHAAJ.K..IDDLEEI..L....GG H3 K4 J2"
 
 class TestNode(unittest.TestCase):
 
@@ -154,6 +155,9 @@ class TestNode(unittest.TestCase):
 		self.assertEqual(grandChild.cost(), 2)
 		self.assertEqual(greatGrandChild.cost(), 3)
 	
+	def test_generateStartNode(self):
+		startNode = generateStartNode(example7)
+		self.assertEqual(startNode.grid, Grid("BBBJCCH..J.KHAAJ.K..IDDLEEI..L....GG"))
 
 
 if __name__ == '__main__':

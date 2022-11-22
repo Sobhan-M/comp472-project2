@@ -1,5 +1,6 @@
 from car import *
 from grid import *
+from iomanager import *
 import numpy as np
 
 GRID_MIN = 0
@@ -156,6 +157,8 @@ def moveFromParent(car:Car, move:int):
 
 		return output
 
+def generateStartNode(puzzleLine:str):
+	return Node(Grid(getGrid(puzzleLine)), generateCarList(puzzleLine))
 
 
 
