@@ -32,7 +32,7 @@ class Node:
 	def __str__(self):
 		output = self.grid.lineString() + " "
 		for car in self.cars:
-			output += str(car) + str(car.positions) + " "
+			output += car.symbol + str(car.positions) + " "
 		return output
 
 	def copy(self):

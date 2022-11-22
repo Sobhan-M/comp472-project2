@@ -34,8 +34,8 @@ class Car:
 		if self.symbol != other.symbol:
 			return False
 
-		if self.fuel != other.fuel:
-			return False
+		# if self.fuel != other.fuel:
+		# 	return False
 
 		return True
 
