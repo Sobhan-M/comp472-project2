@@ -62,7 +62,7 @@ class Node:
 		# Updating cars list.
 		for i in range(len(newCars)):
 			if newCars[i].symbol == car.symbol:
-				if newCar.isAtExit() and newCar.orientation == "x":
+				if newCar.isAtExit() and newCar.orientation == "x" and newCar.symbol != "A":
 					newCars.pop(i)
 					break
 				else:

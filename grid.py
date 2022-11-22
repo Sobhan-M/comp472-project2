@@ -10,7 +10,7 @@ class Grid:
 	def __str__(self):
 		message = ""
 		for row in self.grid:
-			message += "  ".join(row) + "\n"
+			message += " ".join(row) + "\n"
 		return message
 
 	def __eq__(self, other):
@@ -41,7 +41,7 @@ class Grid:
 				if self.grid[i][j] == car.symbol:
 					self.grid[i][j] = "."
 
-		if car.isAtExit() and car.orientation == "x":
+		if car.isAtExit() and car.orientation == "x" and car.symbol != "A":
 			return
 
 		for coord in car.positions.position:
