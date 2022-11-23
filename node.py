@@ -13,6 +13,7 @@ class Node:
 		self.grid = grid
 		self.cars = cars
 		self.move = move
+		self.exitedCars = list()
 
 	def __eq__(self, other):
 		if not isinstance(other, Node):
@@ -59,18 +60,24 @@ class Node:
 		newGrid = self.grid.copy()
 		newGrid.updateGrid(newCar)
 		newCars = copyCarsList(self.cars)
+
+		exitingCar = None
 		
 		# Updating cars list.
 		for i in range(len(newCars)):
 			if newCars[i].symbol == car.symbol:
 				if newCar.isAtExit() and newCar.orientation == "x" and newCar.symbol != "A":
-					newCars.pop(i)
+					exitingCar = newCars.pop(i)
 					break
 				else:
 					newCars[i] = newCar
 
 		newNode = Node(newGrid, newCars, self)
 		newNode.move = moveFromParent(car, move)
+
+		if exitingCar is not None:
+			newNode.exitedCars.append(exitingCar)
+
 		self.children.append(newNode)
 		return newNode
 

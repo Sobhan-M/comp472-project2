@@ -73,6 +73,9 @@ class Reporter:
 
 		for state in self.solutionPath[1:]:
 			car = getCarFromList(state.move[0], state.cars)
+			if car is None:
+				car = getCarFromList(state.move[0], state.exitedCars)
+
 			output += "{} {:>4} {}\n".format(state.move, car.fuel, str(state)) 
 		
 		output += "\n"
