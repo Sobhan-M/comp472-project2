@@ -105,9 +105,9 @@ class TestNode(unittest.TestCase):
 		carB = Car(Position([[1,2],[2,2]]), 2, "y", "B", 2)
 
 		self.assertEqual(moveFromParent(carA, 2), "A right 2")
-		self.assertEqual(moveFromParent(carA, -3), "A left 3")
-		self.assertEqual(moveFromParent(carB, 1), "B down 1")
-		self.assertEqual(moveFromParent(carB, -2), "B up 2")
+		self.assertEqual(moveFromParent(carA, -3), "A  left 3")
+		self.assertEqual(moveFromParent(carB, 1), "B  down 1")
+		self.assertEqual(moveFromParent(carB, -2), "B    up 2")
 		self.assertRaises(Exception, moveFromParent(carB, 0), "should raise exception")
 
 	def test_generateChild(self):

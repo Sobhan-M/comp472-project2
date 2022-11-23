@@ -143,17 +143,15 @@ def copyCarsList(cars):
 	return newCars
 
 def moveFromParent(car:Car, move:int):
-		output = car.symbol;
+		output = ""
 		if car.orientation == "x" and move > 0:
-			output += " right "
+			output = "{} {:>5} {}".format(car.symbol, "right", abs(move))
 		elif car.orientation == "x" and move < 0:
-			output += " left "
+			output = "{} {:>5} {}".format(car.symbol, "left", abs(move))
 		elif car.orientation == "y" and move > 0:
-			output += " down "
+			output = "{} {:>5} {}".format(car.symbol, "down", abs(move))
 		elif car.orientation == "y" and move < 0:
-			output += " up "
-
-		output += str(abs(move))
+			output = "{} {:>5} {}".format(car.symbol, "up", abs(move))
 
 		return output
 
