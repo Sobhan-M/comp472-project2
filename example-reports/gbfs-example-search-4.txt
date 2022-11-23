@@ -1,0 +1,7 @@
+f: 0    g: 0    h: 3    ....F...B.F.AABCF....C.....C....EE..
+f: 0    g: 0    h: 2    ........B...AABC.....CF....CF...EEF.
+f: 0    g: 0    h: 1    ............AA.C....BCF...BCF...EEF.
+f: 0    g: 0    h: 1    ..B.....B...AA.C.....CF....CF...EEF.
+f: 0    g: 0    h: 1    ............AA.C....BCF...BCF..EE.F.
+f: 0    g: 0    h: 0    ............AA......BCF...BCF..EECF.
+f: 0    g: 0    h: 0    ............AA......BCF...BCF..EECF.
