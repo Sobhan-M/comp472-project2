@@ -16,6 +16,7 @@ class Reporter:
 		self.endTime = 0
 		self.nodesVisited = 0
 		self.solutionPath = list()
+		self.searchPath = list()
 	
 	def startTimer(self):
 		self.startTime = time.time()
@@ -98,10 +99,13 @@ class Reporter:
 		report += self.finalConfigurationMessage()
 
 		return report
-	
-	
-		
-		
+
+	def addToSearchPath(self, node:Node, f, g, h):
+		fn = f(node)
+		gn = g(node)
+		hn = h(node)
+		msg = "f: {:<4} g: {:<4} h: {:<4} {}".format(fn, gn, hn, str(node))
+		self.searchPath.append(msg)
 
 def generatePathFromRoot(goalNode: Node):
 	node = goalNode

@@ -64,6 +64,22 @@ class TestReporter(unittest.TestCase):
 		path = generatePathFromRoot(goal)
 
 		self.assertEqual(path, [parent, child, goal])
+
+	def test_addToSearchPath(self):
+		parent = generateStartNode("C.B...C.BHHHAADD........EEGGGF.....F")
+		child = parent.generateChild(getCarFromList("D", parent.cars), 2)
+		goal = child.generateChild(getCarFromList("A", child.cars), 4)
+		reporter = Reporter(example)
+		reporter.addToSearchPath(parent, lambda n: 0, lambda n: n.cost(), lambda n: 0)
+		reporter.addToSearchPath(child, lambda n: 0, lambda n: n.cost(), lambda n: 0)
+		reporter.addToSearchPath(goal, lambda n: 0, lambda n: n.cost(), lambda n: 0)
+
+		expectedSearch1 = "f: 0    g: 0    h: 0    C.B...C.BHHHAADD........EEGGGF.....F"
+		expectedSearch2 = "f: 0    g: 1    h: 0    C.B...C.BHHHAA..........EEGGGF.....F"
+		expectedSearch3 = "f: 0    g: 2    h: 0    C.B...C.BHHH....AA......EEGGGF.....F"
+
+		self.assertEqual(reporter.searchPath, [expectedSearch1, expectedSearch2, expectedSearch3])
+
 	
 
 

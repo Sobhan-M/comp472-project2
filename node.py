@@ -32,7 +32,7 @@ class Node:
 		return True
 
 	def __str__(self):
-		return self.grid.lineString() + " "
+		return self.grid.lineString()
 
 	def copy(self):
 		return Node(self.grid.copy(), copyCarsList(self.cars), self.parent, self.children)
