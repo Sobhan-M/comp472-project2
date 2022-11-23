@@ -141,3 +141,9 @@ def generateCarList(puzzleLine:str):
 		cars.append(Car(Position(carPositions[i]), carLengths[i], carOrientations[i], carSymbols[i], fuel))
 
 	return cars
+
+def getCarFromList(carSymbol:str, cars:list):
+	for car in cars:
+		if car.symbol == carSymbol:
+			return car
+	return None

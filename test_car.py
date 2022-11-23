@@ -159,6 +159,15 @@ class TestCar(unittest.TestCase):
 			else:
 				self.assertEqual(car.fuel, 100)
 
+	def test_getCarFromList(self):
+		car1 = Car(Position([[0,1],[0,2]]), 2, "x", "A")
+		car2 = Car(Position([[1,0],[2,0]]), 2, "y", "B")
+		car3 = Car(Position([[4,4],[4,5]]), 2, "x", "C")
+
+		self.assertIs(getCarFromList("A", [car1,car2,car3]), car1)
+		self.assertIs(getCarFromList("B", [car1,car2,car3]), car2)
+		self.assertIs(getCarFromList("C", [car1,car2,car3]), car3)
+		self.assertIsNone(getCarFromList("D", [car1,car2,car3]))
 
 if __name__ == '__main__':
     unittest.main()
