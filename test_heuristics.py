@@ -43,6 +43,28 @@ class TestHeuristic(unittest.TestCase):
 		self.assertEqual(h3(node3, 2), 6)
 		self.assertEqual(h3(node4, 2), 6)
 
+	def test_h4(self):
+		node1 = generateStartNode(example1)
+		node2 = generateStartNode(example2)
+		node3 = generateStartNode(example3)
+		node4 = generateStartNode(example4)
+
+		self.assertEqual(h4(node1), 0.5)
+		self.assertEqual(h4(node2), 1)
+		self.assertEqual(h4(node3), 1)
+		self.assertEqual(h4(node4), 1)
+	
+	def test_h5(self):
+		node1 = generateStartNode(example1)
+		node2 = generateStartNode(example2)
+		node3 = generateStartNode(example3)
+		node4 = generateStartNode(example4)
+
+		self.assertEqual(h5(node1), 1.5)
+		self.assertEqual(h5(node2), 2)
+		self.assertEqual(h5(node3), 4)
+		self.assertEqual(h5(node4), 4)
+
 
 
 if __name__ == '__main__':

@@ -33,3 +33,20 @@ def h2(node:Node):
 
 def h3(node:Node, k=2):
 	return k * h1(node)
+
+def h4(node:Node):
+	"""
+	Blocks to the goal divided by 4.
+	"""
+	row = node.grid.grid[2]
+	numOfBlocks = 0
+	
+	for block in reversed(row):
+		if block == "A":
+			break
+		numOfBlocks += 1
+	
+	return numOfBlocks/4
+
+def h5(node:Node):
+	return h1(node) + h4(node)
