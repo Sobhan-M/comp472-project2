@@ -2,7 +2,7 @@ def extractPuzzleLines(fileName:str):
 	puzzleLines = list()
 	with open(fileName, "r") as file:
 		for line in file:
-			if line[0:1] ==  "\n" or line[0] == "#":
+			if line.isspace() or line[0] == "#":
 				continue
 			endOfLineIndex = line.find("\n")
 			if endOfLineIndex == -1:
@@ -20,6 +20,8 @@ def getFuel(puzzleLine:str):
 	if len(splitLine) == 1:
 		return allCarsFuel
 	for carsFuel in splitLine[1:]:
+		if carsFuel.isspace() or carsFuel == "":
+			continue
 		allCarsFuel[carsFuel[0]] = int(carsFuel[1:])
 	return allCarsFuel
 	
