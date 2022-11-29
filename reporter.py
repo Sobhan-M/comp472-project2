@@ -12,6 +12,7 @@ import time
 class Reporter:
 	def __init__(self, puzzleLine:str):
 		self.puzzleLine = puzzleLine
+		self.startNode = generateStartNode(puzzleLine)
 		self.startTime = 0
 		self.endTime = 0
 		self.nodesVisited = 0
@@ -47,9 +48,9 @@ class Reporter:
 
 	def initialConfigurationMessage(self):
 		output = f"Initial board configuration: {self.puzzleLine}\n"
-		output += f"\n{str(self.solutionPath[0].grid)}\n"
+		output += f"\n{str(self.startNode.grid)}\n"
 		output += f"Car fuel available: "
-		cars = self.solutionPath[0].cars
+		cars = self.startNode.cars
 		for i in range(len(cars)):
 			output += str(cars[i])
 			if i != len(cars)-1:
@@ -87,16 +88,17 @@ class Reporter:
 		return str(self.solutionPath[-1].grid) + "\n"
 
 	def generateSolutionReport(self):
-		if self.goalNode is None:
-			return "no solution"
-		
 		report = self.initialConfigurationMessage()
 		report += self.runtimeMessage()
 		report += self.searchPathMessage()
-		report += self.solutionLengthMessage()
-		report += self.solutionPathMessage()
-		report += self.solutionPathStatesMessage()
-		report += self.finalConfigurationMessage()
+
+		if self.goalNode is None:
+			report += "\nNo solution was found for this puzzle.\n"
+		else:
+			report += self.solutionLengthMessage()
+			report += self.solutionPathMessage()
+			report += self.solutionPathStatesMessage()
+			report += self.finalConfigurationMessage()
 
 		return report
 
