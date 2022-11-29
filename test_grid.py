@@ -28,14 +28,14 @@ class TestGrid(unittest.TestCase):
 	def test_updateGrid(self):
 		grid = Grid(example6)
 		car = Car(Position([[5,3],[5,4],[5,5]]), 3, "x", "A")
-		grid.updateGrid(car)
+		grid.updateGrid(car, Car(Position([[5,0],[5,1],[5,2]]), 3, "x", "A"))
 		self.assertEqual(grid,Grid(".................................AAA"), "should move the As horizontally")
 
 		before = "A.....A............................."
 		car = Car(Position([[0,0],[1,0]]),2,"y","A")
 		car.move(1)
 		grid = Grid(before)
-		grid.updateGrid(car)
+		grid.updateGrid(car, Car(Position([[0,0],[1,0]]),2,"y","A"))
 		self.assertEqual(grid, Grid("......A.....A......................."), "should move the As vertically")
 
 	def test_copy(self):

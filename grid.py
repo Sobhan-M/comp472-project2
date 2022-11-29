@@ -29,23 +29,21 @@ class Grid:
 		
 		return True
 
-	def updateGrid(self, car:Car):
+	def updateGrid(self, newCar:Car, oldCar:Car):
 		"""
 		Updates the grid after the car has moved.
 		Replaces all old positions with '.'.
 		Places symbol on all new positions.
 		Removes car completely if it is at the exit.
 		"""
-		for i in range(len(self.grid)):
-			for j in range(len(self.grid[i])):
-				if self.grid[i][j] == car.symbol:
-					self.grid[i][j] = "."
+		for coord in oldCar.positions.position:
+			self.grid[coord[0]][coord[1]] = "."
 
-		if car.isAtExit() and car.orientation == "x" and car.symbol != "A":
+		if newCar.isAtExit() and newCar.orientation == "x" and newCar.symbol != "A":
 			return
 
-		for coord in car.positions.position:
-			self.grid[coord[0]][coord[1]] = car.symbol
+		for coord in newCar.positions.position:
+			self.grid[coord[0]][coord[1]] = newCar.symbol
 
 	def copy(self):
 		newGrid = copyMatrix(self.grid)
