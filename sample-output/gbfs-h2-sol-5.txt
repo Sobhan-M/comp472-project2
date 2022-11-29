@@ -7,12 +7,12 @@ E A A G . I
 D D F . . I
 . . F . . .
 
-Car fuel available: D:100, C:100, F:100, E:100, G:100, A:100, I:100, H:100, B:100
+Car fuel available: E:100, G:100, C:100, H:100, F:100, B:100, A:100, I:100, D:100
 
-Runtime: 0.6744949817657471 seconds
+Runtime: 0.656141996383667 seconds
 Search path length: 556 states
 Solution path length: 36 moves
-Solution path: I  down 1; B right 1; E    up 1; A  left 1; F    up 2; D right 3; F  down 2; A right 1; E  down 4; A  left 1; B  left 1; F    up 3; C  left 3; F  down 3; G  down 1; H  down 1; B right 4; G    up 1; F    up 3; C right 3; F  down 3; A right 1; E    up 4; A  left 1; F    up 3; C  left 3; F  down 3; G  down 1; B  left 1; H    up 1; F    up 2; D  left 2; G  down 2; D  left 1; F  down 2; A right 4
+Solution path: I  down 1; B right 1; E    up 1; A  left 1; F    up 2; D right 3; F  down 2; A right 1; E  down 4; B  left 1; A  left 1; F    up 3; C  left 3; F  down 3; G  down 1; H  down 1; B right 4; G    up 1; F    up 3; C right 3; F  down 3; A right 1; E    up 4; A  left 1; F    up 3; C  left 3; F  down 3; G  down 1; B  left 1; H    up 1; F    up 2; D  left 2; G  down 2; D  left 1; F  down 2; A right 4
 
 I  down 1   99 BB.G.HE..G.HEAAG....FCCIDDF..I..F..I
 B right 1   99 .BBG.HE..G.HEAAG....FCCIDDF..I..F..I
@@ -23,8 +23,8 @@ D right 3   97 EBBG.HE.FG.HAAFG....FCCI...DDI.....I
 F  down 2   96 EBBG.HE..G.HAA.G....FCCI..FDDI..F..I
 A right 1   98 EBBG.HE..G.H.AAG....FCCI..FDDI..F..I
 E  down 4   95 .BBG.H...G.H.AAG....FCCIE.FDDIE.F..I
-A  left 1   97 .BBG.H...G.HAA.G....FCCIE.FDDIE.F..I
-B  left 1   98 BB.G.H...G.HAA.G....FCCIE.FDDIE.F..I
+B  left 1   98 BB.G.H...G.H.AAG....FCCIE.FDDIE.F..I
+A  left 1   97 BB.G.H...G.HAA.G....FCCIE.FDDIE.F..I
 F    up 3   93 BBFG.H..FG.HAAFG.....CCIE..DDIE....I
 C  left 3   97 BBFG.H..FG.HAAFG..CC...IE..DDIE....I
 F  down 3   90 BB.G.H...G.HAA.G..CCF..IE.FDDIE.F..I

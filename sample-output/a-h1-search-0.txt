@@ -1,10 +1,9 @@
 f: 1    g: 0    h: 1    BBIJ....IJCC..IAAMGDDK.MGH.KL.GHFFL.
 f: 1    g: 1    h: 0    BBIJ....IJCC..IAA.GDDK..GH.KLMGHFFLM
 f: 1    g: 1    h: 0    BBIJ....IJCC..IAA.GDDK.MGH.KLMGHFFL.
-f: 2    g: 1    h: 1    BBIJ....IJCC..IAAMGDDKLMGH.KL.GHFF..
 f: 2    g: 1    h: 1    BBIJ....IJCCG.IAAMGDDK.MGH.KL..HFFL.
 f: 2    g: 1    h: 1    BBIJ..G.IJCCG.IAAMGDDK.M.H.KL..HFFL.
-f: 2    g: 2    h: 0    BBIJ....IJCC..IAA.GDDKL.GH.KLMGHFF.M
+f: 2    g: 1    h: 1    BBIJ....IJCC..IAAMGDDKLMGH.KL.GHFF..
 f: 2    g: 2    h: 0    BBIJ....IJCCG.IAA.GDDK..GH.KLM.HFFLM
 f: 2    g: 2    h: 0    BBIJ..G.IJCCG.IAA.GDDK...H.KLM.HFFLM
 f: 2    g: 2    h: 0    BBIJ....IJCC..I.AAGDDK..GH.KLMGHFFLM

@@ -7,10 +7,10 @@ G D D K . M
 G H . K L .
 G H F F L .
 
-Car fuel available: D:100, L:100, C:100, F:100, G:100, A:100, I:100, H:100, B:100, M:100, K:100, J:100
+Car fuel available: C:100, J:100, G:100, H:100, F:100, B:100, A:100, I:100, K:100, M:100, L:100, D:100
 
-Runtime: 0.04378104209899902 seconds
-Search path length: 18 states
+Runtime: 0.023883342742919922 seconds
+Search path length: 14 states
 Solution path length: 2 moves
 Solution path: M  down 2; A right 1
 

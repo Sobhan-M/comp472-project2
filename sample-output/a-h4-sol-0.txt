@@ -1,0 +1,26 @@
+Initial board configuration: BBIJ....IJCC..IAAMGDDK.MGH.KL.GHFFL. 
+
+B B I J . .
+. . I J C C
+. . I A A M
+G D D K . M
+G H . K L .
+G H F F L .
+
+Car fuel available: C:100, J:100, G:100, H:100, F:100, B:100, A:100, I:100, K:100, M:100, L:100, D:100
+
+Runtime: 0.009485721588134766 seconds
+Search path length: 7 states
+Solution path length: 2 moves
+Solution path: M  down 2; A right 1
+
+M  down 2   98 BBIJ....IJCC..IAA.GDDK..GH.KLMGHFFLM
+A right 1   99 BBIJ....IJCC..I.AAGDDK..GH.KLMGHFFLM
+
+B B I J . .
+. . I J C C
+. . I . A A
+G D D K . .
+G H . K L M
+G H F F L M
+
