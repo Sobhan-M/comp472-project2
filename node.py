@@ -2,11 +2,13 @@ from car import *
 from grid import *
 from iomanager import *
 import numpy as np
+import time
 
 GRID_MIN = 0
 GRID_MAX = 5
 
 class Node:
+	timeChecking = 0
 	def __init__(self, grid:Grid, cars:list, parent=None, children=[], move=""):
 		self.parent = parent
 		self.children = children
@@ -52,8 +54,11 @@ class Node:
 		if move == 0:
 			raise Exception("Cannot Generate A Child Without A Move")
 
-		if not canMove(car, move, self.cars):
+		s = time.time()
+		if not canMove(car, move, self.cars, self.grid):
+			Node.timeChecking += time.time() - s
 			return None
+		Node.timeChecking += time.time() - s
 		
 		newCar = car.copy()
 		newCar.move(move)
@@ -118,23 +123,29 @@ def isInBorder(positions):
 		return False
 	return True
 
-def hasPositionConflict(cars, carSymbol, newPosition):
+def hasPositionConflict(oldGrid:Grid, carSymbol:str, newPosition:Position):
 	for pos in newPosition.position:
-		for car in cars:
-			if car.symbol != carSymbol: # Do not compare position with self.
-				for coord in car.positions.position:
-					if pos[0] == coord[0] and pos[1] == coord[1]:
-						return True
+		if oldGrid.grid[pos[0]][pos[1]] != carSymbol and oldGrid.grid[pos[0]][pos[1]] != ".":
+			return True
 	return False
 
-def canMove(car:Car, numOfMoves:int, cars:list):
+
+	# for pos in newPosition.position:
+	# 	for car in cars:
+	# 		if car.symbol != carSymbol: # Do not compare position with self.
+	# 			for coord in car.positions.position:
+	# 				if pos[0] == coord[0] and pos[1] == coord[1]:
+	# 					return True
+	# return False
+
+def canMove(car:Car, numOfMoves:int, cars:list, grid:Grid):
 	newPosition = car.nextPosition(numOfMoves)
 
 	if not car.canUseFuel(numOfMoves):
 		return False
 	if not isInBorder(newPosition):
 		return False
-	if hasPositionConflict(cars, car.symbol, newPosition):
+	if hasPositionConflict(grid, car.symbol, newPosition):
 		return False
 
 	# Checking each position along the way.
@@ -147,7 +158,7 @@ def canMove(car:Car, numOfMoves:int, cars:list):
 	
 	for intermediateMove in range(start, end):
 		intermediatePosition = car.nextPosition(intermediateMove)
-		if hasPositionConflict(cars, car.symbol, intermediatePosition):
+		if hasPositionConflict(grid, car.symbol, intermediatePosition):
 			return False
 
 	return True

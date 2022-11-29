@@ -60,34 +60,41 @@ class TestNode(unittest.TestCase):
 		self.assertFalse(isInBorder(Position([[0,0], [0,-1], [0,-2]])))
 
 	def test_hasPositionConflict(self):
+		grid = Grid("AAABBBC.....C..E..C..E.....E..DDD...")
+
+		# AAABBBC.....C..E..C..E.....E..DDD...
+
 		car1 = Car(Position([[0,0],[0,1],[0,2]]), 3, "x", "A")
 		car2 = Car(Position([[0,3],[0,4],[0,5]]), 3, "x", "B")
 		car3 = Car(Position([[1,0],[2,0],[3,0]]), 3, "y", "C")
 		car4 = Car(Position([[5,0],[5,1],[5,2]]), 3, "x", "D")
 		car5 = Car(Position([[2,3],[3,3],[4,3]]), 3, "y", "E")
 
-		self.assertFalse(hasPositionConflict([car1,car2,car3,car4,car5], car1.symbol, car1.positions))
-		self.assertFalse(hasPositionConflict([car1,car2,car3,car4,car5], car2.symbol, car2.positions))
-		self.assertFalse(hasPositionConflict([car1,car2,car3,car4,car5], car3.symbol, car3.positions))
-		self.assertFalse(hasPositionConflict([car1,car2,car3,car4,car5], car4.symbol, car4.positions))
-		self.assertFalse(hasPositionConflict([car1,car2,car3,car4,car5], car5.symbol, car5.positions))
-		self.assertTrue(hasPositionConflict([car1,car2,car3,car4,car5], car1.symbol, car1.nextPosition(1)))
-		self.assertTrue(hasPositionConflict([car1,car2,car3,car4,car5], car2.symbol, car2.nextPosition(-1)))
-		self.assertTrue(hasPositionConflict([car1,car2,car3,car4,car5], car3.symbol, car3.nextPosition(-1)))
-		self.assertFalse(hasPositionConflict([car1,car2,car3,car4,car5], car3.symbol, car3.nextPosition(1)))
-		self.assertTrue(hasPositionConflict([car1,car2,car3,car4,car5], car3.symbol, car3.nextPosition(2)))
-		self.assertFalse(hasPositionConflict([car1,car2,car3,car4,car5], car5.symbol, car5.nextPosition(-1)))
-		self.assertTrue(hasPositionConflict([car1,car2,car3,car4,car5], car5.symbol, car5.nextPosition(-2)))
+		self.assertFalse(hasPositionConflict(grid, car1.symbol, car1.positions))
+		self.assertFalse(hasPositionConflict(grid, car2.symbol, car2.positions))
+		self.assertFalse(hasPositionConflict(grid, car3.symbol, car3.positions))
+		self.assertFalse(hasPositionConflict(grid, car4.symbol, car4.positions))
+		self.assertFalse(hasPositionConflict(grid, car5.symbol, car5.positions))
+		self.assertTrue(hasPositionConflict(grid, car1.symbol, car1.nextPosition(1)))
+		self.assertTrue(hasPositionConflict(grid, car2.symbol, car2.nextPosition(-1)))
+		self.assertTrue(hasPositionConflict(grid, car3.symbol, car3.nextPosition(-1)))
+		self.assertFalse(hasPositionConflict(grid, car3.symbol, car3.nextPosition(1)))
+		self.assertTrue(hasPositionConflict(grid, car3.symbol, car3.nextPosition(2)))
+		self.assertFalse(hasPositionConflict(grid, car5.symbol, car5.nextPosition(-1)))
+		self.assertTrue(hasPositionConflict(grid, car5.symbol, car5.nextPosition(-2)))
 
 	def test_canMove(self):
+		grid = Grid("........B...AAB.....................")
+		
+
 		carA = Car(Position([[2,0],[2,1]]), 2, "x", "A")
 		carB = Car(Position([[1,2],[2,2]]), 2, "y", "B", 2)
 
-		self.assertTrue(canMove(carA, 0, [carA, carB]))
-		self.assertFalse(canMove(carA, 1, [carA, carB]), "should intersect with B")
-		self.assertFalse(canMove(carA, -1, [carA, carB]), "should leave area")
-		self.assertFalse(canMove(carB, 3, [carA, carB]), "should run out of fuel")
-		self.assertFalse(canMove(carA, 3, [carA, carB]))
+		self.assertTrue(canMove(carA, 0, [carA, carB], grid))
+		self.assertFalse(canMove(carA, 1, [carA, carB], grid), "should intersect with B")
+		self.assertFalse(canMove(carA, -1, [carA, carB], grid), "should leave area")
+		self.assertFalse(canMove(carB, 3, [carA, carB], grid), "should run out of fuel")
+		self.assertFalse(canMove(carA, 3, [carA, carB], grid))
 
 	
 	def test_copyCarsList(self):
