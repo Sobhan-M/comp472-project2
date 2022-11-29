@@ -127,21 +127,29 @@ def hasPositionConflict(cars, carSymbol, newPosition):
 	return False
 
 def canMove(car:Car, numOfMoves:int, cars:list):
-		# Checking each position along the way.
-		if numOfMoves < 0:
-			start = numOfMoves
-			end = 0
-		else:
-			start = 0
-			end = numOfMoves
-		
-		for intermediateMove in range(start, end):
-			intermediatePosition = car.nextPosition(intermediateMove)
-			if hasPositionConflict(cars, car.symbol, intermediatePosition):
-				return False
+	newPosition = car.nextPosition(numOfMoves)
 
-		newPosition = car.nextPosition(numOfMoves)
-		return car.canUseFuel(numOfMoves) and isInBorder(newPosition) and not hasPositionConflict(cars, car.symbol, newPosition)
+	if not car.canUseFuel(numOfMoves):
+		return False
+	if not isInBorder(newPosition):
+		return False
+	if hasPositionConflict(cars, car.symbol, newPosition):
+		return False
+
+	# Checking each position along the way.
+	if numOfMoves < 0:
+		start = numOfMoves
+		end = 0
+	else:
+		start = 0
+		end = numOfMoves
+	
+	for intermediateMove in range(start, end):
+		intermediatePosition = car.nextPosition(intermediateMove)
+		if hasPositionConflict(cars, car.symbol, intermediatePosition):
+			return False
+
+	return True
 
 def copyCarsList(cars):
 	newCars = []
