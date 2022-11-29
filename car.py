@@ -45,7 +45,7 @@ class Car:
 		"""
 		Moves the car moveDistance blocks based on orientation.
 		If oriented horizontally, then positive is to the right.
-		If oriented vertically, then positive is to the left.
+		If oriented vertically, then positive is downward.
 		"""
 		if self.orientation == "x":
 			self.positions.translate((0, moveDistance))

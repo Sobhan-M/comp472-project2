@@ -58,7 +58,7 @@ class Node:
 		newCar = car.copy()
 		newCar.move(move)
 		newGrid = self.grid.copy()
-		newGrid.updateGrid(newCar)
+		newGrid.updateGrid(newCar, car)
 		newCars = copyCarsList(self.cars)
 
 		exitingCar = None
@@ -71,6 +71,7 @@ class Node:
 					break
 				else:
 					newCars[i] = newCar
+					break
 
 		newNode = Node(newGrid, newCars, self)
 		newNode.move = moveFromParent(car, move)
