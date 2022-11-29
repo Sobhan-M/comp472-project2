@@ -71,7 +71,7 @@ class Car:
 		return newPositions
 
 	def canUseFuel(self, fuelToUse:int):
-		return self.fuel - fuelToUse >= 0
+		return self.fuel - abs(fuelToUse) >= 0
 
 	def isAtExit(self):
 		for coord in self.positions.position:

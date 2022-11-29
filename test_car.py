@@ -81,6 +81,7 @@ class TestCar(unittest.TestCase):
 		self.assertTrue(car.canUseFuel(10))
 		self.assertFalse(car.canUseFuel(11))
 		self.assertFalse(car.canUseFuel(20))
+		self.assertFalse(car.canUseFuel(-20))
 
 	def test_isAtExit(self):
 		car = Car(Position([[2,3],[2,4],[2,5]]), 3, "x", "A", 10)
