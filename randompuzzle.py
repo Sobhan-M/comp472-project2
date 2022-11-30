@@ -17,7 +17,7 @@ def generateRandomPuzzle():
 	addCarToVector(matrix[2], "A", 2, True)
 
 	# Randomly adding other cars.
-	numOfCars = random.randint(8,15)
+	numOfCars = random.randint(12,15)
 	for i in range(numOfCars):
 		isVertical = random.randint(1,2) == 1 # Coin flip.
 
