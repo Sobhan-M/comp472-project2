@@ -8,7 +8,6 @@ GRID_MIN = 0
 GRID_MAX = 5
 
 class Node:
-	timeChecking = 0
 	def __init__(self, grid:Grid, cars:list, parent=None, children=[], move=""):
 		self.parent = parent
 		self.children = children
@@ -54,20 +53,17 @@ class Node:
 		if move == 0:
 			raise Exception("Cannot Generate A Child Without A Move")
 
-		s = time.time()
 		if not canMove(car, move, self.cars, self.grid):
-			Node.timeChecking += time.time() - s
 			return None
-		Node.timeChecking += time.time() - s
 		
 		newCar = car.copy()
 		newCar.move(move)
 		newGrid = self.grid.copy()
 		newGrid.updateGrid(newCar, car)
-		newCars = copyCarsList(self.cars)
+		# newCars = copyCarsList(self.cars)
+		newCars = self.cars.copy() # Shallow copy because we'll replace the moved car later.
 
 		exitingCar = None
-		
 		# Updating cars list.
 		for i in range(len(newCars)):
 			if newCars[i].symbol == car.symbol:
@@ -77,7 +73,7 @@ class Node:
 				else:
 					newCars[i] = newCar
 					break
-
+		
 		newNode = Node(newGrid, newCars, self)
 		newNode.move = moveFromParent(car, move)
 
@@ -117,10 +113,8 @@ class Node:
 def isInBorder(positions):
 	for pos in positions.position:
 		# Checking if position is within borders.
-		if GRID_MIN <= pos[0] and pos[0] <= GRID_MAX:
-			if GRID_MIN <= pos[1] and pos[1] <= GRID_MAX:
-				continue
-		return False
+		if pos[0] < GRID_MIN or pos[0] > GRID_MAX or pos[1] < GRID_MIN or pos[1] > GRID_MAX:
+			return False
 	return True
 
 def hasPositionConflict(oldGrid:Grid, carSymbol:str, newPosition:Position):
@@ -129,25 +123,16 @@ def hasPositionConflict(oldGrid:Grid, carSymbol:str, newPosition:Position):
 			return True
 	return False
 
-
-	# for pos in newPosition.position:
-	# 	for car in cars:
-	# 		if car.symbol != carSymbol: # Do not compare position with self.
-	# 			for coord in car.positions.position:
-	# 				if pos[0] == coord[0] and pos[1] == coord[1]:
-	# 					return True
-	# return False
-
 def canMove(car:Car, numOfMoves:int, cars:list, grid:Grid):
-	newPosition = car.nextPosition(numOfMoves)
 
 	if not car.canUseFuel(numOfMoves):
 		return False
+	newPosition = car.nextPosition(numOfMoves)
 	if not isInBorder(newPosition):
 		return False
 	if hasPositionConflict(grid, car.symbol, newPosition):
 		return False
-
+	
 	# Checking each position along the way.
 	if numOfMoves < 0:
 		start = numOfMoves
@@ -164,7 +149,7 @@ def canMove(car:Car, numOfMoves:int, cars:list, grid:Grid):
 	return True
 
 def copyCarsList(cars):
-	newCars = []
+	newCars = list()
 	for car in cars:
 		newCars.append(car.copy())
 	return newCars
