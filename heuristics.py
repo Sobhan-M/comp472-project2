@@ -2,6 +2,9 @@ from node import *
 from grid import *
 
 def h1(node:Node):
+	"""
+	Counts the number of blocking vehicles in front of A.
+	"""
 	row = node.grid.grid[2]
 	numOfCars = 0
 	carsSeen = dict()
@@ -19,6 +22,9 @@ def h1(node:Node):
 	return numOfCars
 
 def h2(node:Node):
+	"""
+	Counts the number of blocked positions in front of A.
+	"""
 	row = node.grid.grid[2]
 	numOfBlocked = 0
 
@@ -32,11 +38,14 @@ def h2(node:Node):
 	return numOfBlocked
 
 def h3(node:Node, k=2):
+	"""
+	Is `h2` times constant `k`.
+	"""
 	return k * h1(node)
 
 def h4(node:Node):
 	"""
-	Blocks to the goal divided by 4.
+	Counts the blocks to the goal divided by 4.
 	"""
 	row = node.grid.grid[2]
 	numOfBlocks = 0
@@ -49,4 +58,7 @@ def h4(node:Node):
 	return numOfBlocks/4
 
 def h5(node:Node):
+	"""
+	A combination of `h1` and `h4`.
+	"""
 	return h1(node) + h4(node)

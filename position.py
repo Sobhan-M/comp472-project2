@@ -1,4 +1,5 @@
 class Position:
+	"""A wrapper class for the positions of a car."""
 	def __init__(self, input):
 		self.position = input
 

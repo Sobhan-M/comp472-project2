@@ -1,6 +1,10 @@
 from car import *
 
 class Grid:
+	"""
+	A wrapper class for a 2D array that represents a 6x6 grid for the game.
+	"""
+	
 	def __init__(self, grid):
 		if isinstance(grid, str):
 			self.grid = stringToGrid(grid)

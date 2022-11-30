@@ -1,9 +1,14 @@
 class PriorityQueue:
+	"""
+	A data structure acting as a priority queue for the open list.
+	It uses a 2D hash table.
+	1. The first layer uses the `value` as a key.
+	2. The second layer uses the `grid` as a key.
+	"""
 	def __init__(self, val):
 		"""
 		`val` us a function that converts the objects in this priority queue into numbers.
 		For example, the function can be a heuristic.
-		Uses a 2D hash table. First layer is the cost. Second layer is a string representation of the node.
 		"""
 		self.val = val
 		self.length = 0

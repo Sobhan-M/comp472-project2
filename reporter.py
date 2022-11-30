@@ -1,8 +1,3 @@
-# Take puzzle line as input
-# Have a startTime() and endTime() option.
-# Have a searchPath++ method
-# Have a method to generate the entire report.
-
 from position import *
 from grid import *
 from node import *
@@ -10,6 +5,10 @@ from car import *
 import time
 
 class Reporter:
+	"""
+	A method that records information about the solving of an algorithm and helps write the associated report.
+	Essentially an observer.
+	"""
 	def __init__(self, puzzleLine:str):
 		self.puzzleLine = puzzleLine
 		self.startNode = generateStartNode(puzzleLine)

@@ -1,4 +1,9 @@
 def extractPuzzleLines(fileName:str):
+	"""
+	Returns a list of puzzles from a given file.
+	- Ignores empty lines.
+	- Ignores lines starting with #
+	"""
 	puzzleLines = list()
 	with open(fileName, "r") as file:
 		for line in file:
@@ -12,9 +17,15 @@ def extractPuzzleLines(fileName:str):
 	return puzzleLines
 
 def getGrid(puzzleLine:str):
+	"""
+	Gets the grid string from a puzzle line.
+	"""
 	return puzzleLine.split(" ")[0]
 
 def getFuel(puzzleLine:str):
+	"""
+	Returns a `dict` of fuel corresponding to each car.
+	"""
 	allCarsFuel = dict()
 	splitLine = puzzleLine.split(" ")
 	if len(splitLine) == 1:

@@ -8,6 +8,9 @@ GRID_MIN = 0
 GRID_MAX = 5
 
 class Node:
+	"""
+	Represents a node to be expanded. Each node is a state of the game.
+	"""
 	def __init__(self, grid:Grid, cars:list, parent=None, children=[], move=""):
 		self.parent = parent
 		self.children = children

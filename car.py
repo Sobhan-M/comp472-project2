@@ -5,6 +5,10 @@ from iomanager import *
 EXIT_POSITION = np.array([2,5])
 
 class Car:
+	"""
+	The car class contains important information about each car, such as its symbol, fuel, orientation, and position.
+	"""
+
 	def __init__(self, positions:Position, length:int, orientation:str, symbol:str, fuel=100):
 		"""
 		Positions is a list of positions.
@@ -82,6 +86,10 @@ class Car:
 		return False
 
 def findCarSymbols(string:str):
+	"""
+	Takes in a grid (as a string) and finds all car symbols.
+	Returns a list of these unique letters.
+	"""
 	symbols = []
 	characters = set(string)
 	
@@ -92,6 +100,10 @@ def findCarSymbols(string:str):
 	return symbols
 
 def findCarPositions(string:str, symbols:list):
+	"""
+	Takes in a grid (as a string) and all car symbols.
+	It then returns a list containing the positions, in the same order as the symbols.
+	"""
 	allPositions = []
 	for symbol in symbols:
 		symbolPositions = []
