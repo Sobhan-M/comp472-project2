@@ -1,3 +1,0 @@
-f: 2.0  g: 0    h: 2.0  C.B...C.BHHHAADD........EEGGGF.....F
-f: 2.0  g: 1    h: 1.0  C.B...C.BHHHAA..........EEGGGF.....F
-f: 2.0  g: 2    h: 0.0  C.B...C.BHHH....AA......EEGGGF.....F

@@ -1,0 +1,50 @@
+............AAEEBBD.....D.C...D.C... B58 C97 D60 E23
+.............AA...BEDFFFBEDCCC.ED... B48 C97 D24 E69 F80
+.....D.....DAA..CCBBFFF............. B3 C45 D58 F35
+.........CCCAABBB................... B1 C11
+D..CC.D.....AA........B.....B....... B33 C93 D48
+.............AA....CC....DDD..BB.... B44 C25 D42
+...DEE...D.C.GGAAC.....C......FFFBBB B85 C19 D22 E93 F15 G71
+.HHFFD.....DCC.AAGB...EGB...E.B...E. B63 C91 D9 E13 F34 G92 H96
+.........DDDCCCAAF.EBBBF.E.HHF.E.GGG B90 C19 D70 E71 F42 G80 H98
+............AA..............BB...... B18
+........DDDB.AA..BEF...GEF...GE..CCG B8 C26 D86 E4 F63 G96
+...FFF.H..DD.H.AA.GGG.BB..CC..IIIEEE B9 C82 D47 E23 F81 G68 H27 I14
+...BBB..IFF.CCIAA.G.I...GD.E...D.E.. B95 C7 D3 E89 F45 G26 I47
+.......EEDDD...HAA...H...CCBB....... B78 C12 D7 E53 H25
+.F.BBB.F.C...F.CAA.EE.......JJDDHHH. B24 C60 D95 E98 F56 H12 J88
+D.....D..EEE.CCAA.BBBGGF.H...F.H...F B55 C54 D81 E84 F7 G75 H58
+........EEE.BAA.CCB.DDD.B........... B20 C42 D43 E97
+......CC..GEFFAAGE.BBBHE....H.....H. B26 C88 E19 F71 G41 H40
+......HHD...AADB...E.B...ECCC..E.... B59 C20 D8 E57 H16
+GGG..C.BFFFC.BAA.C.BDDDH.....H...... B96 C6 D88 F1 G67 H92
+..C.....C....AA.....B.....B.....B... B43 C70
+H..G..H.CG..H.CGAA.DFFFB.DE..B..E..B B48 C100 D95 E87 F51 G51 H31
+.DDD..EEE...AA.BBFCG...FCG.....GKKHH B81 C47 D100 E73 F69 G20 H59 K41
+BBB.....EEE.IAA...IC...DICGG.D.C.FFD B76 C25 D94 E89 F19 G52 I56
+.....F.....FEAAGGGEDC...BDC...BD.... B53 C9 D35 E55 F100 G23
+.......DDD....AA....BC..EEBC.....C.. B33 C72 D97 E52
+.......DD.EE..GGAA....B.CC..B....... B51 C52 D53 E69 G34
+................AA.....B.....B...... B80
+...CC.BB.HHH.AA..I.EDD.I.E..GGFFF... B96 C73 D15 E20 F85 G42 H43 I11
+.............AA...FFEEE.IIIB..CCCB.. B30 C85 E68 F82 I92
+.....EB....EB.AAFE.C.DF..C.DF.GGGDHH B7 C81 D85 E19 F48 G94 H5
+...G...C.G...CD.AA.CDBB....FFF....EE B36 C37 D84 E47 F7 G54
+.BBD.....D..AACCC................... B100 C70 D53
+.......FFFB.AA..B..C..B..C..E..C..E. B5 C69 E6 F0
+..E.....E...DDAA..F.B...F.BCC.F.B... B27 C95 D17 E42 F61
+...............AA.CCC........B.....B B63 C9
+......D.....DBBBAADF...E.F...E.FHHHE B17 D52 E5 F40 H50
+.........II.AA.CCC.BBB.EH..GGEH..DDD B100 C42 D92 E91 G27 H68 I50
+FFF.......DD.AAJJ.EEEC.HII.C.H.BBC.. B27 C10 D77 E32 F50 H50 I91 J99
+........CCC.....AA...BBB............ B55 C22
+................AABBB............... B16
+......I..D..IAADF.I...F.GG.BF..CCB.. B62 C7 D46 F24 G48 I42
+................AA....DC.B..DC.B..D. B27 C83 D27
+..DDD.......AA.....B.....BEFF..BE.HH B46 D26 E59 F83 H6
+.BBB........AA......CCE.....E.....E. B73 C94 E15
+................AA...............BBB B46
+HHH...BBBIIIFFFAAD.....DEECC.DJJJGGG B69 C67 D90 E20 F46 G100 H46 I70 J66
+.............BDDAA.BCC.............. B62 C62 D5
+.BB.....CCC.AA.....D.....D.......... B61 C17 D86
+.........CCCAA....B.....B.....B..... B38 C0

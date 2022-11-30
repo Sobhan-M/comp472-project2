@@ -1,0 +1,15 @@
+Initial board configuration: IJBBCCIJDDL.IJAAL.EEK.L...KFF..GGHH. F0 G6
+
+I J B B C C
+I J D D L .
+I J A A L .
+E E K . L .
+. . K F F .
+. G G H H .
+
+Car fuel available: A:100, L:100, F:0, B:100, K:100, G:6, D:100, E:100, H:100, C:100, I:100, J:100
+
+Runtime: 0.29683923721313477 seconds
+Search path length: 663 states
+
+No solution was found for this puzzle.

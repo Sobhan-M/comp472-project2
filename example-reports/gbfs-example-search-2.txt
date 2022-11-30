@@ -1,3 +1,0 @@
-f: 0    g: 0    h: 1    C.B...C.BHHHAADD........EEGGGF.....F
-f: 0    g: 0    h: 0    C.B...C.BHHHAA..........EEGGGF.....F
-f: 0    g: 0    h: 0    C.B...C.BHHHAA..........EEGGGF.....F

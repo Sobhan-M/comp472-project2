@@ -1,0 +1,48 @@
+Initial board configuration: JBBCCCJDD..MJAAL.MFFKL.N..KGGN.HH... 
+
+J B B C C C
+J D D . . M
+J A A L . M
+F F K L . N
+. . K G G N
+. H H . . .
+
+Car fuel available: A:100, L:100, F:100, B:100, K:100, G:100, D:100, M:100, C:100, H:100, N:100, J:100
+
+Runtime: 1.4162442684173584 seconds
+Search path length: 2855 states
+Solution path length: 24 moves
+Solution path: H right 3; K  down 1; F right 1; J  down 3; B  left 1; C  left 1; M    up 1; A  left 1; L    up 1; H  left 1; N  down 1; F right 3; K    up 2; G  left 2; L  down 2; D right 2; M  down 1; C right 1; K    up 2; A right 3; K  down 2; C  left 1; M    up 1; A right 1
+
+H right 3   97 JBBCCCJDD..MJAAL.MFFKL.N..KGGN....HH
+K  down 1   99 JBBCCCJDD..MJAAL.MFF.L.N..KGGN..K.HH
+F right 1   99 JBBCCCJDD..MJAAL.M.FFL.N..KGGN..K.HH
+J  down 3   97 .BBCCC.DD..M.AAL.MJFFL.NJ.KGGNJ.K.HH
+B  left 1   99 BB.CCC.DD..M.AAL.MJFFL.NJ.KGGNJ.K.HH
+C  left 1   99 BBCCC..DD..M.AAL.MJFFL.NJ.KGGNJ.K.HH
+M    up 1   99 BBCCCM.DD..M.AAL..JFFL.NJ.KGGNJ.K.HH
+A  left 1   99 BBCCCM.DD..MAA.L..JFFL.NJ.KGGNJ.K.HH
+L    up 1   99 BBCCCM.DDL.MAA.L..JFF..NJ.KGGNJ.K.HH
+H  left 1   96 BBCCCM.DDL.MAA.L..JFF..NJ.KGGNJ.KHH.
+N  down 1   99 BBCCCM.DDL.MAA.L..JFF...J.KGGNJ.KHHN
+F right 3   96 BBCCCM.DDL.MAA.L..J...FFJ.KGGNJ.KHHN
+K    up 2   97 BBCCCM.DDL.MAAKL..J.K.FFJ..GGNJ..HHN
+G  left 2   98 BBCCCM.DDL.MAAKL..J.K.FFJGG..NJ..HHN
+L  down 2   97 BBCCCM.DD..MAAK...J.KLFFJGGL.NJ..HHN
+D right 2   98 BBCCCM...DDMAAK...J.KLFFJGGL.NJ..HHN
+M  down 1   98 BBCCC....DDMAAK..MJ.KLFFJGGL.NJ..HHN
+C right 1   98 BB.CCC...DDMAAK..MJ.KLFFJGGL.NJ..HHN
+K    up 2   95 BBKCCC..KDDMAA...MJ..LFFJGGL.NJ..HHN
+A right 3   96 BBKCCC..KDDM...AAMJ..LFFJGGL.NJ..HHN
+K  down 2   93 BB.CCC...DDM..KAAMJ.KLFFJGGL.NJ..HHN
+C  left 1   97 BBCCC....DDM..KAAMJ.KLFFJGGL.NJ..HHN
+M    up 1   97 BBCCCM...DDM..KAA.J.KLFFJGGL.NJ..HHN
+A right 1   95 BBCCCM...DDM..K.AAJ.KLFFJGGL.NJ..HHN
+
+B B C C C M
+. . . D D M
+. . K . A A
+J . K L F F
+J G G L . N
+J . . H H N
+
