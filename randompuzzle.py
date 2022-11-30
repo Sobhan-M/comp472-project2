@@ -2,7 +2,7 @@ import random
 
 def generateRandomPuzzle():
 	# Setup.
-	cars = ["B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q"]
+	cars = ["B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T"]
 	matrix = [
 				[".", ".", ".", ".", ".", "."],
 				[".", ".", ".", ".", ".", "."],
@@ -14,10 +14,10 @@ def generateRandomPuzzle():
 	carsAdded = list()
 
 	# Adding A.
-	addCarToVector(matrix[2], "A", 2)
+	addCarToVector(matrix[2], "A", 2, True)
 
 	# Randomly adding other cars.
-	numOfCars = random.randint(1,10)
+	numOfCars = random.randint(8,15)
 	for i in range(numOfCars):
 		isVertical = random.randint(1,2) == 1 # Coin flip.
 
@@ -36,7 +36,8 @@ def generateRandomPuzzle():
 				for j in range(6):
 					matrix[j][columnIndex] = vec[j]
 		else:
-			vec = addCarToVector(matrix[random.randint(0,5)], cars[i], random.randint(2,3))
+			rowIndex = random.randint(0,5)
+			vec = addCarToVector(matrix[rowIndex], cars[i], random.randint(2,3), rowIndex == 2)
 
 		if vec is not None:
 			carsAdded.append(cars[i])
@@ -69,8 +70,8 @@ def findAllInstances(stringToSearch:str, substr:str):
 	return indices
 
 
-def addCarToVector(vector:list, car:str, carLength:int):
-	stringifiedVector = "".join(vector)
+def addCarToVector(vector:list, car:str, carLength:int, shouldIgnoreEnd=False):
+	stringifiedVector = "".join(vector)[:5] if shouldIgnoreEnd else "".join(vector)
 	index = stringifiedVector.find("." * carLength)
 
 	if index == -1:

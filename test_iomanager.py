@@ -3,7 +3,7 @@ from iomanager import *
 
 class TestIOManager(unittest.TestCase):
 	def test_extractPuzzleLines(self):
-		extractedLines = extractPuzzleLines("test_input-file.txt")
+		extractedLines = extractPuzzleLines("input/test_input-file.txt")
 		expectedLines = ["AAABCDFEEBCDF.RRC.GGH....IH.KK.IJJLL",
 			"AAB...C.BHHHC.RRDF....DFEEGGG.......",
 			"AAB...C.BHHHC.RRDF....DFEEGGG....... D0"]
